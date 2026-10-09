@@ -1,0 +1,272 @@
+/*
+  styles.css — how the page LOOKS and where things SIT.
+  Each rule is:   selector { property: value; }
+  The selector picks HTML elements (".poster" = anything with class="poster"),
+  and the properties describe how they look.
+
+  All numbers come from the Figma frame "Draft: Posters on Site" (1280 × 2212).
+*/
+
+
+/* ============================================================
+   1. COLOUR VARIABLES
+   Each colour is named once here and reused below, so a change
+   only has to be made in one place.
+   ============================================================ */
+:root {
+  --page-bg:   #000927; /* deep navy behind everything (same as the nav bar in Figma) */
+  --nav-bg:    #000927;
+  --stroke:    #444e6d; /* the soft blue-grey outline around each poster */
+  --white:     #ffffff;
+  --red:       #d14c5b; /* the pinkish-red "Posters" heading */
+}
+
+
+/* ============================================================
+   2. BASIC RESET
+   ============================================================ */
+
+/* "border-box" = an element's width INCLUDES its border. Figma measures
+   the same way, so our numbers match the design 1:1. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Browsers add default spacing around these; we remove it so only
+   our own spacing applies. */
+body,
+h1 {
+  margin: 0;
+}
+
+body {
+  background: var(--page-bg);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Links default to blue + underlined. Turn that off. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ============================================================
+   3. THE STAGE
+   A fixed 1280 × 2212 box (the Figma frame size), centred in the window.
+   "position: relative" makes it the reference point for everything
+   placed inside it with "position: absolute" (left/top are measured
+   from the stage's top-left corner).
+   "overflow: hidden" cuts off anything poking outside — in Figma the
+   bottom-right poster also runs past the frame edge and is cropped.
+   ============================================================ */
+.stage {
+  position: relative;
+  width: 1280px;
+  height: 2212px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   4. NAVIGATION BAR  (56px tall)
+   ============================================================ */
+.nav {
+  position: absolute;   /* pinned to the top-left of the stage */
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 56px;
+  background: var(--nav-bg);
+  z-index: 20;          /* "z-index" = front-to-back order. Higher = in front. The nav is in front of everything. */
+}
+
+/* Logo: a 48 × 48 image, 32px from the left and 4px from the top. */
+.nav-logo {
+  position: absolute;
+  left: 32px;
+  top: 4px;
+}
+
+.nav-logo img {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+/* The three text links sit in a row ("flex") with 24px between them. */
+.nav-links {
+  position: absolute;
+  left: 917px;
+  top: 16px;
+  display: flex;
+  gap: 24px;
+  font-size: 16px;
+  font-weight: 500;     /* Poppins Medium */
+  color: var(--white);
+  white-space: nowrap;  /* never wrap onto a second line */
+}
+
+/* White button: 40px tall, 24px of space left/right of the text. */
+.nav-button {
+  position: absolute;
+  left: 1157px;
+  top: 8px;
+  display: flex;
+  align-items: center;      /* centres the text up/down */
+  justify-content: center;  /* centres the text left/right */
+  height: 40px;
+  padding: 8px 24px;
+  border-radius: 8px;       /* rounded corners */
+  background: var(--white);
+  color: var(--nav-bg);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   5. "POSTERS" HEADING
+   Figma has two copies: red on top, white just behind it, shifted
+   3px left and 3px down. We recreate the white copy with
+   text-shadow:  (x-offset  y-offset  blur  colour).
+   The heading is positioned by its CENTRE point (1013, 170),
+   hence the translate(-50%, -50%) which shifts it back by half
+   of its own width and height.
+   ============================================================ */
+.title {
+  position: absolute;
+  left: 1013px;
+  top: 170.5px;
+  transform: translate(-50%, -50%);
+  z-index: 10;          /* in front of the posters (its left edge overlaps the big top-left poster) */
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 144px;
+  line-height: normal;
+  white-space: nowrap;
+  color: var(--red);
+  text-shadow: -3px 3px 0 var(--white);   /* 0 blur = a crisp copy, not a glow */
+  pointer-events: none;                    /* clicks pass through to a poster underneath, if any */
+}
+
+
+/* ============================================================
+   6. POSTERS
+   ".poster" = what all five share: a thin outline in --stroke,
+   and a pointer cursor because they can be clicked.
+   Then each ".poster-N" sets its own size (width/height) and
+   position (left/top), measured from the stage's top-left corner.
+   Posters that come LATER in index.html sit on top of earlier ones
+   where they overlap — same stacking order as Figma.
+   ============================================================ */
+.poster {
+  position: absolute;
+  display: block;
+  border: 1px solid var(--stroke);
+  cursor: pointer;
+  /* "transition" = animate changes smoothly instead of snapping. */
+  transition: border-color 0.2s ease;
+}
+
+/* The picture fills its link box. "object-fit: cover" crops it to fit
+   instead of stretching it. */
+.poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hover / keyboard-focus state: the outline brightens so it's clear
+   the poster is clickable. (Figma doesn't show this state — my addition.) */
+.poster:hover,
+.poster:focus-visible {
+  border-color: var(--white);
+  outline: none;
+}
+
+/* Large poster, top left (palm tree) */
+.poster-1 { left: 0;     top: 112px;  width: 801px; height: 1036px; }
+
+/* Large poster, bottom right (autumn leaves) — runs off the right/bottom edge */
+.poster-2 { left: 481px; top: 1388px; width: 801px; height: 1036px; }
+
+/* Medium poster, right (Bad Opera) */
+.poster-3 { left: 747px; top: 379px;  width: 496px; height: 641px; }
+
+/* Medium poster, bottom left (doves) */
+.poster-4 { left: 31px;  top: 1524px; width: 496px; height: 641px; }
+
+/* Small poster, centre (the hand) */
+.poster-5 { left: 278px; top: 1065px; width: 307px; height: 397px; }
+
+
+/* ============================================================
+   7. CLICK-IN VIEW ("lightbox")
+   A full-screen overlay showing one poster large.
+   - By default it is hidden ("display: none").
+   - When the page address ends in its id (e.g. #poster-1-view,
+     which is what clicking poster 1 does), ":target" matches and
+     we switch it to "display: flex" to show it. No JavaScript.
+   "position: fixed" pins it to the browser window (not the page),
+   so it fills the screen even if you've scrolled down.
+   ============================================================ */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;                         /* shorthand for top/right/bottom/left: 0 */
+  z-index: 100;                     /* in front of absolutely everything */
+  align-items: center;              /* centre the poster up/down */
+  justify-content: center;          /* …and left/right */
+  background: rgba(0, 9, 39, 0.94); /* the page navy, almost opaque, so the page dims behind */
+}
+
+.lightbox:target {
+  display: flex;
+}
+
+/* Invisible link filling the whole overlay: clicking the dark area closes the view. */
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-out;
+}
+
+/* The big poster. "max-width/height" in "vw/vh" (1vw = 1% of window width,
+   1vh = 1% of window height) keep it fully visible on any screen size,
+   and "object-fit: contain" keeps its proportions (no cropping). */
+.lightbox-image {
+  position: relative;               /* sits above the backdrop link */
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* "close" button, top right — styled like the nav button. */
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 8px 24px;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--nav-bg);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+  background: var(--red);
+  color: var(--white);
+  outline: none;
+}

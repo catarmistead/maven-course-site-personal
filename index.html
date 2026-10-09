@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+  index.html — the CONTENT of the page.
+  HTML says *what* is on the page (a nav bar, a heading, five posters).
+  styles.css says *how it looks and where things sit*.
+  Built from the Figma frame "Draft: Posters on Site" (node 4008:190).
+-->
+<html lang="en">
+<head>
+  <!-- Tells the browser which text encoding to use so letters and symbols show correctly. -->
+  <meta charset="UTF-8">
+
+  <!-- Makes the page use the real width of the device instead of a zoomed-out desktop view. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- The text shown in the browser tab. -->
+  <title>Posters</title>
+
+  <!--
+    The design uses two fonts: Poppins (nav) and DM Serif Display (big heading).
+    Most computers don't have them, so we load them free from Google Fonts.
+    This needs an internet connection.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Connects this page to our stylesheet. Without this line the page would be unstyled. -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!--
+    The "stage" is a 1280 × 2212 box that matches the Figma frame.
+    Everything inside is placed at exact positions (like pinning items
+    to a board), because the poster collage overlaps on purpose.
+  -->
+  <div class="stage">
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <header class="nav">
+
+      <!-- Logo. The image file lives in the "images" folder next to this page. -->
+      <a href="#" class="nav-logo">
+        <img src="images/logo.svg" alt="Home">
+      </a>
+
+      <!-- <nav> marks the group of site links (helps screen readers). -->
+      <nav class="nav-links" aria-label="Main">
+        <a href="#">about.</a>
+        <a href="#">work.</a>
+        <a href="#">blog.</a>
+      </nav>
+
+      <!-- White button on the right. It says "Label" in Figma (placeholder text). -->
+      <a href="#" class="nav-button">Label</a>
+    </header>
+
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+
+      <!--
+        The big heading. In Figma it's two copies of "Posters" (white and red),
+        shifted slightly to look like a shadow. We use ONE heading and draw the
+        white copy with a CSS text-shadow instead.
+      -->
+      <h1 class="title">Posters</h1>
+
+      <!--
+        The five posters. Each one is a LINK wrapped around a picture.
+        Clicking it jumps to "#poster-N-view", which is the big
+        "click-in" view further down this page (see the "lightbox" section).
+        The classes: "poster" = shared look, "poster-N" = this one's size
+        and position. Later posters sit on top of earlier ones where they overlap.
+      -->
+      <a class="poster poster-1" href="#poster-1-view" aria-label="View poster 1 larger">
+        <img src="images/poster-1.jpg"
+             alt="Minor Rituals poster: a green palm tree with a snake, lists Brianna Paon, Jordan Graham and plans2chill">
+      </a>
+
+      <a class="poster poster-2" href="#poster-2-view" aria-label="View poster 2 larger">
+        <img src="images/poster-2.jpg"
+             alt="Minor Rituals poster: dub techno at The Lilypad, 8pm to 1AM, with red autumn leaves and clouds">
+      </a>
+
+      <a class="poster poster-3" href="#poster-3-view" aria-label="View poster 3 larger">
+        <img src="images/poster-3.jpg"
+             alt="Minor Rituals poster: Bad Opera live, Jordan Graham, plans2chill, March 20 at The Lilypad">
+      </a>
+
+      <a class="poster poster-4" href="#poster-4-view" aria-label="View poster 4 larger">
+        <img src="images/poster-4.jpg"
+             alt="Minor Rituals poster: white doves tangled in red ribbon, July 26, dub techno at The Lilypad">
+      </a>
+
+      <a class="poster poster-5" href="#poster-5-view" aria-label="View poster 5 larger">
+        <img src="images/poster-5.jpg"
+             alt="Poster with a line-drawn hand and a list of DJs, April 25, New Haven">
+      </a>
+    </main>
+
+  </div>
+
+
+  <!--
+    ===== CLICK-IN VIEWS ("lightboxes") =====
+    One hidden full-screen overlay per poster. No JavaScript needed:
+    when the address ends in "#poster-1-view" (which is what happens
+    when you click poster 1), the browser marks the element with
+    id="poster-1-view" as the "target", and styles.css shows it using
+    the ":target" rule. Clicking the dark backdrop or "close" goes to
+    "#closed" (an address that matches nothing), which un-targets it and
+    hides it again. We avoid plain "#" because browsers jump to the top
+    of the page for that.
+  -->
+
+  <div class="lightbox" id="poster-1-view">
+    <!-- The backdrop is a link covering the whole screen: clicking outside the poster closes the view. -->
+    <a class="lightbox-backdrop" href="#closed" aria-label="Close"></a>
+    <img class="lightbox-image" src="images/poster-1.jpg" alt="Minor Rituals poster with a green palm tree">
+    <a class="lightbox-close" href="#closed">close</a>
+  </div>
+
+  <div class="lightbox" id="poster-2-view">
+    <a class="lightbox-backdrop" href="#closed" aria-label="Close"></a>
+    <img class="lightbox-image" src="images/poster-2.jpg" alt="Minor Rituals poster with red autumn leaves">
+    <a class="lightbox-close" href="#closed">close</a>
+  </div>
+
+  <div class="lightbox" id="poster-3-view">
+    <a class="lightbox-backdrop" href="#closed" aria-label="Close"></a>
+    <img class="lightbox-image" src="images/poster-3.jpg" alt="Minor Rituals poster with Bad Opera, March 20">
+    <a class="lightbox-close" href="#closed">close</a>
+  </div>
+
+  <div class="lightbox" id="poster-4-view">
+    <a class="lightbox-backdrop" href="#closed" aria-label="Close"></a>
+    <img class="lightbox-image" src="images/poster-4.jpg" alt="Minor Rituals poster with white doves, July 26">
+    <a class="lightbox-close" href="#closed">close</a>
+  </div>
+
+  <div class="lightbox" id="poster-5-view">
+    <a class="lightbox-backdrop" href="#closed" aria-label="Close"></a>
+    <img class="lightbox-image" src="images/poster-5.jpg" alt="Poster with a line-drawn hand, April 25, New Haven">
+    <a class="lightbox-close" href="#closed">close</a>
+  </div>
+
+</body>
+</html>
