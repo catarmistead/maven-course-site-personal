@@ -19,8 +19,7 @@
       <p class="text-sm-body">Colours, type and components from the Figma file “Project File”, in plain HTML and CSS.</p>
       <p>Link <code>css/tokens.css</code> and <code>css/components.css</code> on any page, then use the classes shown below. Switch Light and Dark with the toggle in the bottom-right corner.</p>
       <div class="docs__links">
-        <a class="button button--primary" href="portfolio.html">Portfolio example</a>
-        <a class="button button--secondary" href="posters.html">Posters example</a>
+        <a class="button button--primary" href="posters.html">Posters example</a>
       </div>
     </header>
 
@@ -69,10 +68,10 @@
           <tbody>
             <tr><th colspan="5" scope="colgroup">Surface</th></tr>
             <tr><td><span class="chip" style="background: var(--surface-default)"></span></td><td><code>--surface-default</code></td><td><code>white</code></td><td><code>navy-950</code></td><td>Page background</td></tr>
-            <tr><td><span class="chip" style="background: var(--surface-raised)"></span></td><td><code>--surface-raised</code></td><td><code>navy-50</code></td><td><code>navy-900</code></td><td>Hero, grey project cards</td></tr>
+            <tr><td><span class="chip" style="background: var(--surface-raised)"></span></td><td><code>--surface-raised</code></td><td><code>navy-50</code></td><td><code>navy-900</code></td><td>Raised panels and cards</td></tr>
             <tr><td><span class="chip" style="background: var(--surface-muted)"></span></td><td><code>--surface-muted</code></td><td><code>navy-100</code></td><td><code>navy-800</code></td><td>Section bands, alternating rows</td></tr>
             <tr><td><span class="chip" style="background: var(--surface-emphasis)"></span></td><td><code>--surface-emphasis</code></td><td><code>navy-200</code></td><td><code>navy-700</code></td><td>Selected tiles, chips</td></tr>
-            <tr><td><span class="chip" style="background: var(--surface-inverse)"></span></td><td><code>--surface-inverse</code></td><td><code>navy-950</code></td><td><code>navy-50</code></td><td>Navigation, footer, Posters page</td></tr>
+            <tr><td><span class="chip" style="background: var(--surface-inverse)"></span></td><td><code>--surface-inverse</code></td><td><code>navy-950</code></td><td><code>navy-50</code></td><td>Navigation, Posters page</td></tr>
             <tr><td><span class="chip" style="background: var(--surface-brand-subtle)"></span></td><td><code>--surface-brand-subtle</code></td><td><code>red-50</code></td><td><code>red-950</code></td><td>Soft red highlight panels</td></tr>
             <tr><th colspan="5" scope="colgroup">Text</th></tr>
             <tr><td><span class="chip" style="background: var(--text-default)"></span></td><td><code>--text-default</code></td><td><code>navy-950</code></td><td><code>navy-50</code></td><td>Body text and headings</td></tr>
@@ -83,7 +82,7 @@
             <tr><td><span class="chip" style="background: var(--text-display)"></span></td><td><code>--text-display</code></td><td><code>red-500</code></td><td><code>red-400</code></td><td>Large red display type only</td></tr>
             <tr><th colspan="5" scope="colgroup">Border</th></tr>
             <tr><td><span class="chip" style="background: var(--border-default)"></span></td><td><code>--border-default</code></td><td><code>navy-200</code></td><td><code>navy-800</code></td><td>Dividers, card outlines</td></tr>
-            <tr><td><span class="chip" style="background: var(--border-strong)"></span></td><td><code>--border-strong</code></td><td><code>navy-950</code></td><td><code>navy-100</code></td><td>Skill rules, outline buttons</td></tr>
+            <tr><td><span class="chip" style="background: var(--border-strong)"></span></td><td><code>--border-strong</code></td><td><code>navy-950</code></td><td><code>navy-100</code></td><td>Strong dividers, outline buttons</td></tr>
             <tr><td><span class="chip" style="background: var(--border-inverse)"></span></td><td><code>--border-inverse</code></td><td><code>navy-600</code></td><td><code>navy-400</code></td><td>Borders on surface-inverse</td></tr>
             <tr><td><span class="chip" style="background: var(--border-focus)"></span></td><td><code>--border-focus</code></td><td><code>red-500</code></td><td><code>red-400</code></td><td>Keyboard focus ring</td></tr>
             <tr><th colspan="5" scope="colgroup">Primary action</th></tr>
@@ -196,63 +195,6 @@
     </section>
 
     <section class="docs-section">
-      <h2>Hero</h2>
-      <p><code>.hero.section</code> with <code>.hero__name</code> and <code>.hero__headline</code>.</p>
-      <div class="preview">
-        <section class="hero section"><div class="container"><p class="hero__name">James Jones</p><p class="hero__headline">UX. UI.<br>Agentic AI.</p></div></section>
-      </div>
-    </section>
-
-    <section class="docs-section">
-      <h2>Project card</h2>
-      <p><code>.project-card</code>; add <code>.project-card--raised</code> for the grey background (Figma property “hasBG”).</p>
-      <div class="preview">
-        <article class="project-card project-card--raised">
-          <div class="project-card__inner">
-            <img class="project-card__image" src="assets/images/project-soft-agents.jpg" alt="Diagram of AI agents working together">
-            <div class="project-card__body">
-              <h3 class="project-card__headline">Soft Agents</h3>
-              <p>I run moonlearning.io, a hands-on learning platform for UI design, Figma, and AI-powered product building.</p>
-              <a class="project-card__link" href="#">find out more <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="docs-section">
-      <h2>About</h2>
-      <p>Text, an optional secondary button (Figma property “hadButton”) and a square image. On mobile the image moves to the top.</p>
-      <div class="preview">
-        <section class="about section">
-          <div class="about__inner">
-            <div class="about__content">
-              <h3 class="about__headline">About me</h3>
-              <p class="about__text">Welcome to my portfolio! I'm Kim, a passionate graphic UI designer dedicated to crafting visual experiences that resonate with users.</p>
-              <a class="button button--secondary" href="#">contact</a>
-            </div>
-            <img class="about__image" src="assets/images/portrait.jpg" alt="Portrait of Kim smiling, wearing round glasses">
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section class="docs-section">
-      <h2>Skills</h2>
-      <p>A title and up to three items, each with a <code>border-strong</code> rule above it.</p>
-      <div class="preview">
-        <section class="skills section">
-          <h3 class="skills__title">Skills</h3>
-          <ul class="skills__list">
-            <li class="skills__item"><h4 class="skills__headline">Graphic Design</h4><p class="skills__text">Vibrant visuals and engaging layouts.</p></li>
-            <li class="skills__item"><h4 class="skills__headline">UI Design</h4><p class="skills__text">Intuitive interfaces shaped by user feedback.</p></li>
-            <li class="skills__item"><h4 class="skills__headline">Front End</h4><p class="skills__text">HTML and CSS for a smoother handoff.</p></li>
-          </ul>
-        </section>
-      </div>
-    </section>
-
-    <section class="docs-section">
       <h2>Posters</h2>
       <p><code>.poster</code> with a size modifier <code>--l</code>, <code>--m</code> or <code>--s</code>, inside <code>.posters__grid</code> on a <code>.posters</code> (inverse) background.</p>
       <div class="preview">
@@ -263,14 +205,6 @@
             <figure class="poster poster--s"><img src="assets/images/poster-5.jpg" alt="Poster: a white hand drawing over red shapes"></figure>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="docs-section">
-      <h2>Footer</h2>
-      <p>Centred links on <code>surface-inverse</code>; stacks on mobile.</p>
-      <div class="preview">
-        <footer class="footer"><span>© 2026 Christine Vallaure</span><a href="#">Imprint</a><a href="#">Contact</a></footer>
       </div>
     </section>
 

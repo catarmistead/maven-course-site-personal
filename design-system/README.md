@@ -16,13 +16,12 @@ then open <http://localhost:8080>.
 
 | File | What it is |
 |---|---|
-| `index.html` | The design system documentation: every colour, text size and component |
-| `portfolio.html` | Example page built only from the system (the Figma Desktop/Tablet/Mobile frames) |
-| `posters.html` | Example page on the navy surface (the Figma "Posters" draft) |
+| `index.html` | The design system documentation: colours, type, spacing, Button, Navigation and Posters |
+| `posters.html` | Example page built only from the system, on the navy surface (the Figma "Posters" draft) |
 | `css/tokens.css` | Every Figma variable as a CSS custom property, with Light/Dark and responsive sizes |
 | `css/components.css` | One section per Figma component, using tokens only |
 | `css/docs.css` | Layout for `index.html` only |
-| `assets/images/` | Logo, project images, portrait and posters exported from Figma |
+| `assets/images/` | Logo and posters exported from Figma |
 | `gaps.md` | What's missing, approximated or worth fixing, **including 8 contrast failures on navy** |
 
 ## Using it on a page
