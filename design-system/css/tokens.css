@@ -1,0 +1,205 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Copied from the Figma file "Project File" (variables panel).
+
+   How this file is organised — the same three layers as in Figma:
+     1. Primitives   the raw palette (red/50 … red/950, navy/50 … navy/950).
+                     Never use these directly in components.
+     2. Semantic     what a colour is FOR (surface, text, border, action).
+                     Components only ever use these.
+     3. Type         font families, weights and a responsive size scale.
+
+   Naming: a Figma variable "text/default" becomes var(--text-default).
+   Anything marked "NOT IN FIGMA" was added in code — see gaps.md.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. PRIMITIVES — Figma collection "color primitives" (one mode)
+   -------------------------------------------------------------------------- */
+:root {
+  --red-50: #FFF1F2;
+  --red-100: #FFDFDF;
+  --red-200: #FFBEBF;
+  --red-300: #FE8F95;
+  --red-400: #EA6974;
+  --red-500: #A6313F;
+  --red-600: #9D2232;
+  --red-700: #810E1F;
+  --red-800: #61131F;
+  --red-900: #4E0B17;
+  --red-950: #33040B;
+
+  --navy-50: #F8FAFD;
+  --navy-100: #EFF2F6;
+  --navy-200: #E1E5EA;
+  --navy-300: #C9CED6;
+  --navy-400: #9EA5B0;
+  --navy-500: #737B88;
+  --navy-600: #4F5968;
+  --navy-700: #333D4F;
+  --navy-800: #1B273A;
+  --navy-900: #0A162A;
+  --navy-950: #000927;   /* the page navy */
+
+  --white: #FFFFFF;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. SEMANTIC COLOURS — Figma collection "color", mode "Light" (default)
+   Each one points at a primitive, exactly like the aliases in Figma.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Surfaces: backgrounds of pages, sections and cards */
+  --surface-default: var(--white);
+  --surface-raised: var(--navy-50);
+  --surface-muted: var(--navy-100);
+  --surface-emphasis: var(--navy-200);
+  --surface-inverse: var(--navy-950);
+  --surface-brand-subtle: var(--red-50);
+
+  /* Text */
+  --text-default: var(--navy-950);
+  --text-muted: var(--navy-600);
+  --text-disabled: var(--navy-400);
+  --text-inverse: var(--white);
+  --text-link: var(--red-600);
+  --text-display: var(--red-500);
+
+  /* Borders and lines */
+  --border-default: var(--navy-200);
+  --border-strong: var(--navy-950);
+  --border-inverse: var(--navy-600);
+  --border-focus: var(--red-500);
+
+  /* Primary button */
+  --action-primary-default: var(--red-600);
+  --action-primary-hover: var(--red-500);
+  --action-primary-pressed: var(--red-800);
+  --action-primary-disabled: var(--navy-200);
+  --action-primary-text: var(--white);
+
+  /* Secondary (outline) button */
+  --action-secondary-default: var(--white);
+  --action-secondary-hover: var(--navy-50);
+  --action-secondary-pressed: var(--navy-100);
+  --action-secondary-disabled: var(--navy-300);
+  --action-secondary-text: var(--navy-950);
+  --action-secondary-border: var(--navy-950);
+
+  color-scheme: light;
+}
+
+/* Figma mode "Dark". Turn it on by adding data-theme="dark" to <html>,
+   or with the theme switch on each page (no JavaScript needed: the :has()
+   selector checks whether the "Dark" radio button is ticked). */
+:root[data-theme="dark"],
+:root:has(#theme-dark:checked) {
+  --surface-default: var(--navy-950);
+  --surface-raised: var(--navy-900);
+  --surface-muted: var(--navy-800);
+  --surface-emphasis: var(--navy-700);
+  --surface-inverse: var(--navy-50);
+  --surface-brand-subtle: var(--red-950);
+
+  --text-default: var(--navy-50);
+  --text-muted: var(--navy-300);
+  --text-disabled: var(--navy-600);
+  --text-inverse: var(--navy-950);
+  --text-link: var(--red-300);
+  --text-display: var(--red-400);
+
+  --border-default: var(--navy-800);
+  --border-strong: var(--navy-100);
+  --border-inverse: var(--navy-400);
+  --border-focus: var(--red-400);
+
+  --action-primary-default: var(--red-400);
+  --action-primary-hover: var(--red-300);
+  --action-primary-pressed: var(--red-200);
+  --action-primary-disabled: var(--navy-800);
+  --action-primary-text: var(--navy-950);
+
+  --action-secondary-default: var(--navy-950);
+  --action-secondary-hover: var(--navy-900);
+  --action-secondary-pressed: var(--navy-800);
+  --action-secondary-disabled: var(--navy-700);
+  --action-secondary-text: var(--navy-50);
+  --action-secondary-border: var(--navy-50);
+
+  color-scheme: dark;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. TYPE — Figma collection "text primitives"
+   Font sizes have three modes in Figma; here they switch with media queries:
+     lg  (wider than 1280px)  → the values in :root below
+     md  (800px – 1280px)     → first @media block
+     sm  (narrower than 800px)→ second @media block
+   -------------------------------------------------------------------------- */
+:root {
+  --font-family-sans: "Poppins", system-ui, sans-serif;
+  --font-family-serif: "DM Serif Display", Georgia, serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;     /* NOT IN FIGMA: nav links and button labels use Poppins Medium */
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-100: 16px;
+  --font-size-200: 24px;
+  --font-size-300: 40px;
+  --font-size-400: 56px;
+  --font-size-500: 72px;
+  --font-size-600: 100px;
+
+  /* NOT IN FIGMA: line heights are set per text layer in Figma, not as variables */
+  --line-height-tight: 1.1;      /* display text */
+  --line-height-heading: 1.25;   /* card headlines */
+  --line-height-title: 1.45;     /* section titles */
+  --line-height-body: 1.7;       /* paragraphs */
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --font-size-200: 20px;
+    --font-size-300: 28px;
+    --font-size-400: 36px;
+    --font-size-500: 56px;
+    --font-size-600: 72px;
+  }
+}
+
+@media (max-width: 799px) {
+  :root {
+    --font-size-200: 18px;
+    --font-size-300: 24px;
+    --font-size-400: 32px;
+    --font-size-500: 40px;
+    --font-size-600: 56px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   4. SPACING AND SHAPE — NOT IN FIGMA
+   The Figma file has no spacing or radius variables of its own (the 64px
+   paddings come from a linked library). These values are read off the
+   components so the CSS has one place to change them.
+   -------------------------------------------------------------------------- */
+:root {
+  --space-100: 4px;
+  --space-200: 8px;
+  --space-300: 12px;
+  --space-400: 16px;
+  --space-500: 24px;
+  --space-600: 32px;
+  --space-700: 40px;
+  --space-800: 48px;
+  --space-900: 64px;
+
+  --radius-button: 8px;
+  --page-max-width: 1280px;
+}

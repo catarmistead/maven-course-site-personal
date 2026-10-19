@@ -1,0 +1,623 @@
+/* ==========================================================================
+   COMPONENTS
+   One section per Figma component. Every colour, size and font here comes
+   from tokens.css — if you want to change how something looks, change the
+   token, not this file.
+
+   Class naming: .component, .component__part, .component--variant
+   (this is called BEM; it keeps class names predictable).
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   BASE — sensible defaults for the whole page
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* width includes padding and border: easier maths */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--text-default);
+  background: var(--surface-default);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* One focus style for everything you can tab to (Figma: button "focused" state) */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
+}
+
+/* Hidden visually but still read by screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Centres content and stops it getting wider than the 1280px Figma frame */
+.container {
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   TEXT STYLES — Figma "Text styles" panel
+   Each class matches a Figma text style of the same name.
+   -------------------------------------------------------------------------- */
+.text-xl-display {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-600);
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+}
+
+.text-display {
+  font-size: var(--font-size-500);
+  line-height: var(--line-height-tight);
+}
+
+.text-sm-display {
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-tight);
+}
+
+.text-headline {
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-tight);
+}
+
+.text-sm-body {
+  font-size: var(--font-size-200);
+  line-height: 1.17;
+}
+
+.text-body {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-body);
+}
+
+
+/* --------------------------------------------------------------------------
+   BUTTON — Figma component set "button"
+   Variants: primary | secondary.
+   Figma "state" variants map to CSS: hover → :hover, active → :active,
+   focused → :focus-visible. Works on <button> and <a>.
+   -------------------------------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-200);
+  min-height: 40px;
+  padding: var(--space-200) var(--space-500);
+  border: 3px solid transparent; /* same size for both variants */
+  border-radius: var(--radius-button);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.button--primary {
+  background: var(--action-primary-default);
+  border-color: var(--action-primary-default);
+  color: var(--action-primary-text);
+}
+.button--primary:hover {
+  background: var(--action-primary-hover);
+  border-color: var(--action-primary-hover);
+}
+.button--primary:active {
+  background: var(--action-primary-pressed);
+  border-color: var(--action-primary-pressed);
+}
+
+.button--secondary {
+  background: var(--action-secondary-default);
+  border-color: var(--action-secondary-border);
+  color: var(--action-secondary-text);
+}
+.button--secondary:hover {
+  background: var(--action-secondary-hover);
+}
+.button--secondary:active {
+  background: var(--action-secondary-pressed);
+}
+
+/* Disabled: real <button disabled>, or aria-disabled="true" on a link */
+.button:disabled,
+.button[aria-disabled="true"] {
+  cursor: not-allowed;
+  color: var(--text-disabled);
+}
+.button--primary:disabled,
+.button--primary[aria-disabled="true"] {
+  background: var(--action-primary-disabled);
+  border-color: var(--action-primary-disabled);
+}
+.button--secondary:disabled,
+.button--secondary[aria-disabled="true"] {
+  background: var(--action-secondary-default);
+  border-color: var(--action-secondary-disabled);
+}
+
+
+/* --------------------------------------------------------------------------
+   LOGO — Figma component "logo" (48 × 48 circle)
+   -------------------------------------------------------------------------- */
+.logo {
+  display: inline-flex;
+  border-radius: 50%;
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+
+/* --------------------------------------------------------------------------
+   NAVIGATION — Figma component set "Navigation"
+   Desktop: 56px bar. Tablet: 90px bar. Mobile: links fold into a menu.
+   The mobile menu uses <details>, which opens and closes without JavaScript.
+   -------------------------------------------------------------------------- */
+.nav {
+  position: relative; /* so the mobile menu panel can sit right below the bar */
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-500);
+  min-height: 56px;
+  padding: var(--space-100) var(--space-600);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-900);
+}
+
+.nav__list {
+  display: flex;
+  gap: var(--space-500);
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+.nav__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* The mobile menu is hidden until the screen is narrow */
+.nav__menu {
+  display: none;
+}
+
+@media (max-width: 1280px) {
+  .nav__inner {
+    min-height: 90px;
+    padding-inline: var(--space-600);
+  }
+}
+
+@media (max-width: 799px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__menu {
+    display: block;
+  }
+
+  /* The clickable menu icon (Figma component "menu") */
+  .nav__menu summary {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    list-style: none;
+    cursor: pointer;
+  }
+  .nav__menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Two lines that turn into an × when the menu is open */
+  .nav__icon {
+    position: relative;
+    width: 24px;
+    height: 14px;
+  }
+  .nav__icon::before,
+  .nav__icon::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 2px;
+    background: currentColor;
+    transition: transform 160ms ease, top 160ms ease, width 160ms ease;
+  }
+  .nav__icon::before { top: 0; width: 24px; }
+  .nav__icon::after { top: 12px; width: 16px; }
+
+  .nav__menu[open] .nav__icon::before,
+  .nav__menu[open] .nav__icon::after {
+    top: 6px;
+    width: 24px;
+  }
+  .nav__menu[open] .nav__icon::before { transform: rotate(45deg); }
+  .nav__menu[open] .nav__icon::after { transform: rotate(-45deg); }
+
+  /* The panel that drops down below the bar */
+  .nav__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-500);
+    padding: var(--space-500) var(--space-600) var(--space-600);
+    background: var(--surface-inverse);
+  }
+  .nav__panel .nav__list {
+    flex-direction: column;
+    gap: var(--space-300);
+  }
+  .nav__panel .nav__link {
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   SECTION — shared padding for the full-width page sections below
+   (Figma: 64px all round on desktop, 40px tablet, 24px mobile)
+   -------------------------------------------------------------------------- */
+.section {
+  padding: var(--space-900);
+}
+
+@media (max-width: 1280px) {
+  .section { padding: var(--space-700); }
+}
+
+@media (max-width: 799px) {
+  .section { padding: var(--space-800) var(--space-500); }
+}
+
+
+/* --------------------------------------------------------------------------
+   HERO — Figma component set "Hero"
+   -------------------------------------------------------------------------- */
+.hero {
+  background: var(--surface-raised);
+  text-align: center;
+}
+
+.hero__name {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-title);
+  margin-bottom: var(--space-400);
+}
+
+.hero__headline {
+  font-size: var(--font-size-500);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+
+/* --------------------------------------------------------------------------
+   PROJECT CARD — Figma component set "ProjectCard"
+   Property "hasBG": add .project-card--raised for the grey background.
+   -------------------------------------------------------------------------- */
+.project-card {
+  background: var(--surface-default);
+}
+
+.project-card--raised {
+  background: var(--surface-raised);
+}
+
+.project-card__inner {
+  display: grid;
+  grid-template-columns: 542fr 594fr; /* the Figma image : text widths */
+  align-items: start;
+  gap: var(--space-900);
+  padding: var(--space-600) var(--space-700);
+}
+
+.project-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-400);
+  padding-top: var(--space-200);
+}
+
+.project-card__headline {
+  font-size: var(--font-size-300);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.project-card__link {
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+.project-card__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 1280px) {
+  .project-card__inner { gap: var(--space-700); }
+}
+
+@media (max-width: 799px) {
+  .project-card__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-600);
+    padding: var(--space-500);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   ABOUT — Figma component set "About"
+   Property "hadButton": leave the button out of the HTML to hide it.
+   -------------------------------------------------------------------------- */
+.about {
+  background: var(--surface-default);
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-900);
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-500);
+}
+
+.about__headline {
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-title);
+}
+
+.about__text {
+  color: var(--text-muted);
+}
+
+.about__image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+@media (max-width: 1280px) {
+  .about__inner { gap: var(--space-700); }
+}
+
+/* Mobile: the photo moves above the text, like the Figma mobile variant */
+@media (max-width: 799px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-600);
+  }
+  .about__image { order: -1; }
+}
+
+
+/* --------------------------------------------------------------------------
+   SKILLS — Figma component set "Skills"
+   -------------------------------------------------------------------------- */
+.skills {
+  background: var(--surface-default);
+}
+
+.skills__title {
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-title);
+  margin-bottom: var(--space-800);
+}
+
+.skills__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-800);
+  padding: 0;
+  list-style: none;
+}
+
+/* Each skill has a line above it (Figma: border/strong, 1px) */
+.skills__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  padding-top: var(--space-500);
+  border-top: 1px solid var(--border-strong);
+}
+
+.skills__headline {
+  font-size: var(--font-size-200);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-title);
+}
+
+.skills__text {
+  color: var(--text-muted);
+}
+
+@media (max-width: 799px) {
+  .skills__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   POSTER — Figma component set "Poster image" (sizes L, M, S)
+   Posters live on a navy page (surface-inverse) with a thin border.
+   -------------------------------------------------------------------------- */
+.posters {
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+
+/* The two-layer "Posters" heading: red text with an offset copy behind it */
+.posters__title {
+  color: var(--text-display);
+  text-shadow: -3px 3px 0 var(--text-inverse);
+  text-align: right;
+  margin-bottom: var(--space-800);
+}
+
+.posters__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-600);
+  align-items: start;
+}
+
+.poster {
+  margin: 0;
+  border: 1px solid var(--border-inverse);
+}
+.poster img {
+  width: 100%;
+  height: auto;
+}
+
+/* Sizes follow the Figma variants: L ≈ 800px, M ≈ 500px, S ≈ 300px wide */
+.poster--l { grid-column: span 7; }
+.poster--m { grid-column: span 5; }
+.poster--s { grid-column: span 4; }
+
+@media (max-width: 799px) {
+  .posters__title { text-align: left; }
+  .posters__grid { grid-template-columns: 1fr; }
+  .poster--l,
+  .poster--m,
+  .poster--s { grid-column: auto; }
+}
+
+
+/* --------------------------------------------------------------------------
+   FOOTER — Figma component set "Footer"
+   -------------------------------------------------------------------------- */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-500);
+  padding: 20px var(--space-500);
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+
+.footer a {
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 799px) {
+  .footer { flex-direction: column; }
+}
+
+
+/* --------------------------------------------------------------------------
+   THEME SWITCH — small Light / Dark toggle shown on every page
+   It is just two radio buttons; tokens.css does the rest with :has().
+   -------------------------------------------------------------------------- */
+.theme-switch {
+  position: fixed;
+  right: var(--space-400);
+  bottom: var(--space-400);
+  z-index: 20;
+  display: flex;
+  padding: var(--space-100);
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  background: var(--surface-default);
+  font-size: 14px;
+}
+
+.theme-switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+.theme-switch label {
+  padding: var(--space-100) var(--space-400);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.theme-switch input:checked + label {
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+
+.theme-switch input:focus-visible + label {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}

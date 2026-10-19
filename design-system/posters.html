@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Posters — example page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<!-- The whole page sits on surface-inverse (Figma frame "Draft: Posters on Site") -->
+<body class="posters">
+
+  <!-- NAVIGATION (same component as the portfolio page) -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a class="logo" href="index.html"><img src="assets/images/logo.png" alt="Home"></a>
+      <nav class="nav__links" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="portfolio.html#about">about.</a></li>
+          <li><a class="nav__link" href="portfolio.html#work">work.</a></li>
+          <li><a class="nav__link" href="posters.html" aria-current="page">blog.</a></li>
+        </ul>
+        <a class="button button--primary" href="portfolio.html#contact">contact</a>
+      </nav>
+      <details class="nav__menu">
+        <summary aria-label="Menu"><span class="nav__icon"></span></summary>
+        <nav class="nav__panel" aria-label="Main (mobile)">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="portfolio.html#about">about.</a></li>
+            <li><a class="nav__link" href="portfolio.html#work">work.</a></li>
+            <li><a class="nav__link" href="posters.html" aria-current="page">blog.</a></li>
+          </ul>
+          <a class="button button--primary" href="portfolio.html#contact">contact</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <!-- Figma text style "XL Display" (DM Serif Display) -->
+      <h1 class="posters__title text-xl-display">Posters</h1>
+
+      <!-- POSTER IMAGES (Figma: Poster image, sizes L / M / S) -->
+      <div class="posters__grid">
+        <figure class="poster poster--l"><img src="assets/images/poster-1.jpg" alt="Minor Rituals poster: a palm tree with purple flowers and a snake"></figure>
+        <figure class="poster poster--m"><img src="assets/images/poster-3.jpg" alt="Minor Rituals poster: a red flower with a yellow centre"></figure>
+        <figure class="poster poster--m"><img src="assets/images/poster-4.jpg" alt="Minor Rituals poster: birds tangled in red ribbons"></figure>
+        <figure class="poster poster--l"><img src="assets/images/poster-2.jpg" alt="Minor Rituals poster: red leaves, clouds and a crescent moon"></figure>
+        <figure class="poster poster--s"><img src="assets/images/poster-5.jpg" alt="Poster: a white hand drawing over red shapes"></figure>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Christine Vallaure</span>
+    <a href="#">Imprint</a>
+    <a href="mailto:hello@example.com">Contact</a>
+  </footer>
+
+  <div class="theme-switch" role="radiogroup" aria-label="Colour mode">
+    <input type="radio" name="theme" id="theme-light" checked><label for="theme-light">Light</label>
+    <input type="radio" name="theme" id="theme-dark"><label for="theme-dark">Dark</label>
+  </div>
+
+</body>
+</html>

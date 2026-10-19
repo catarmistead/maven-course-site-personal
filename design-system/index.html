@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+  <main class="docs container">
+
+    <header class="docs__intro">
+      <h1>My Design System</h1>
+      <p class="text-sm-body">Colours, type and components from the Figma file “Project File”, in plain HTML and CSS.</p>
+      <p>Link <code>css/tokens.css</code> and <code>css/components.css</code> on any page, then use the classes shown below. Switch Light and Dark with the toggle in the bottom-right corner.</p>
+      <div class="docs__links">
+        <a class="button button--primary" href="portfolio.html">Portfolio example</a>
+        <a class="button button--secondary" href="posters.html">Posters example</a>
+      </div>
+    </header>
+
+    <!-- COLOUR ======================================================= -->
+    <section class="docs-section">
+      <h2>Colour primitives</h2>
+      <p>The raw palette (Figma collection “color primitives”). Components never use these directly; they go through the semantic tokens below.</p>
+      <h3>red</h3>
+      <div class="swatch-row">
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-50)"></div><strong>red/50</strong><span class="swatch__meta">#FFF1F2</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-100)"></div><strong>red/100</strong><span class="swatch__meta">#FFDFDF</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-200)"></div><strong>red/200</strong><span class="swatch__meta">#FFBEBF</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-300)"></div><strong>red/300</strong><span class="swatch__meta">#FE8F95</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-400)"></div><strong>red/400</strong><span class="swatch__meta">#EA6974</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-500)"></div><strong>red/500</strong><span class="swatch__meta">#A6313F</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-600)"></div><strong>red/600</strong><span class="swatch__meta">#9D2232</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-700)"></div><strong>red/700</strong><span class="swatch__meta">#810E1F</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-800)"></div><strong>red/800</strong><span class="swatch__meta">#61131F</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-900)"></div><strong>red/900</strong><span class="swatch__meta">#4E0B17</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--red-950)"></div><strong>red/950</strong><span class="swatch__meta">#33040B</span></div>
+      </div>
+      <h3>navy</h3>
+      <div class="swatch-row">
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-50)"></div><strong>navy/50</strong><span class="swatch__meta">#F8FAFD</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-100)"></div><strong>navy/100</strong><span class="swatch__meta">#EFF2F6</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-200)"></div><strong>navy/200</strong><span class="swatch__meta">#E1E5EA</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-300)"></div><strong>navy/300</strong><span class="swatch__meta">#C9CED6</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-400)"></div><strong>navy/400</strong><span class="swatch__meta">#9EA5B0</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-500)"></div><strong>navy/500</strong><span class="swatch__meta">#737B88</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-600)"></div><strong>navy/600</strong><span class="swatch__meta">#4F5968</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-700)"></div><strong>navy/700</strong><span class="swatch__meta">#333D4F</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-800)"></div><strong>navy/800</strong><span class="swatch__meta">#1B273A</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-900)"></div><strong>navy/900</strong><span class="swatch__meta">#0A162A</span></div>
+          <div class="swatch"><div class="swatch__chip" style="background: var(--navy-950)"></div><strong>navy/950</strong><span class="swatch__meta">#000927</span></div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Semantic colours</h2>
+      <p>What each colour is for (Figma collection “color”, modes Light and Dark). The swatch shows the current mode; flip the toggle to see the other one.</p>
+      <div class="table-scroll">
+        <table class="token-table">
+          <thead>
+            <tr><th scope="col"><span class="visually-hidden">Swatch</span></th><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Use for</th></tr>
+          </thead>
+          <tbody>
+            <tr><th colspan="5" scope="colgroup">Surface</th></tr>
+            <tr><td><span class="chip" style="background: var(--surface-default)"></span></td><td><code>--surface-default</code></td><td><code>white</code></td><td><code>navy-950</code></td><td>Page background</td></tr>
+            <tr><td><span class="chip" style="background: var(--surface-raised)"></span></td><td><code>--surface-raised</code></td><td><code>navy-50</code></td><td><code>navy-900</code></td><td>Hero, grey project cards</td></tr>
+            <tr><td><span class="chip" style="background: var(--surface-muted)"></span></td><td><code>--surface-muted</code></td><td><code>navy-100</code></td><td><code>navy-800</code></td><td>Section bands, alternating rows</td></tr>
+            <tr><td><span class="chip" style="background: var(--surface-emphasis)"></span></td><td><code>--surface-emphasis</code></td><td><code>navy-200</code></td><td><code>navy-700</code></td><td>Selected tiles, chips</td></tr>
+            <tr><td><span class="chip" style="background: var(--surface-inverse)"></span></td><td><code>--surface-inverse</code></td><td><code>navy-950</code></td><td><code>navy-50</code></td><td>Navigation, footer, Posters page</td></tr>
+            <tr><td><span class="chip" style="background: var(--surface-brand-subtle)"></span></td><td><code>--surface-brand-subtle</code></td><td><code>red-50</code></td><td><code>red-950</code></td><td>Soft red highlight panels</td></tr>
+            <tr><th colspan="5" scope="colgroup">Text</th></tr>
+            <tr><td><span class="chip" style="background: var(--text-default)"></span></td><td><code>--text-default</code></td><td><code>navy-950</code></td><td><code>navy-50</code></td><td>Body text and headings</td></tr>
+            <tr><td><span class="chip" style="background: var(--text-muted)"></span></td><td><code>--text-muted</code></td><td><code>navy-600</code></td><td><code>navy-300</code></td><td>Secondary text, captions</td></tr>
+            <tr><td><span class="chip" style="background: var(--text-disabled)"></span></td><td><code>--text-disabled</code></td><td><code>navy-400</code></td><td><code>navy-600</code></td><td>Disabled labels</td></tr>
+            <tr><td><span class="chip" style="background: var(--text-inverse)"></span></td><td><code>--text-inverse</code></td><td><code>white</code></td><td><code>navy-950</code></td><td>Text on surface-inverse</td></tr>
+            <tr><td><span class="chip" style="background: var(--text-link)"></span></td><td><code>--text-link</code></td><td><code>red-600</code></td><td><code>red-300</code></td><td>Red links and small red text</td></tr>
+            <tr><td><span class="chip" style="background: var(--text-display)"></span></td><td><code>--text-display</code></td><td><code>red-500</code></td><td><code>red-400</code></td><td>Large red display type only</td></tr>
+            <tr><th colspan="5" scope="colgroup">Border</th></tr>
+            <tr><td><span class="chip" style="background: var(--border-default)"></span></td><td><code>--border-default</code></td><td><code>navy-200</code></td><td><code>navy-800</code></td><td>Dividers, card outlines</td></tr>
+            <tr><td><span class="chip" style="background: var(--border-strong)"></span></td><td><code>--border-strong</code></td><td><code>navy-950</code></td><td><code>navy-100</code></td><td>Skill rules, outline buttons</td></tr>
+            <tr><td><span class="chip" style="background: var(--border-inverse)"></span></td><td><code>--border-inverse</code></td><td><code>navy-600</code></td><td><code>navy-400</code></td><td>Borders on surface-inverse</td></tr>
+            <tr><td><span class="chip" style="background: var(--border-focus)"></span></td><td><code>--border-focus</code></td><td><code>red-500</code></td><td><code>red-400</code></td><td>Keyboard focus ring</td></tr>
+            <tr><th colspan="5" scope="colgroup">Primary action</th></tr>
+            <tr><td><span class="chip" style="background: var(--action-primary-default)"></span></td><td><code>--action-primary-default</code></td><td><code>red-600</code></td><td><code>red-400</code></td><td>Primary button</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-primary-hover)"></span></td><td><code>--action-primary-hover</code></td><td><code>red-500</code></td><td><code>red-300</code></td><td>Hover</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-primary-pressed)"></span></td><td><code>--action-primary-pressed</code></td><td><code>red-800</code></td><td><code>red-200</code></td><td>Pressed</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-primary-disabled)"></span></td><td><code>--action-primary-disabled</code></td><td><code>navy-200</code></td><td><code>navy-800</code></td><td>Disabled background</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-primary-text)"></span></td><td><code>--action-primary-text</code></td><td><code>white</code></td><td><code>navy-950</code></td><td>Label on primary button</td></tr>
+            <tr><th colspan="5" scope="colgroup">Secondary action</th></tr>
+            <tr><td><span class="chip" style="background: var(--action-secondary-default)"></span></td><td><code>--action-secondary-default</code></td><td><code>white</code></td><td><code>navy-950</code></td><td>Outline button background</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-secondary-hover)"></span></td><td><code>--action-secondary-hover</code></td><td><code>navy-50</code></td><td><code>navy-900</code></td><td>Hover</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-secondary-pressed)"></span></td><td><code>--action-secondary-pressed</code></td><td><code>navy-100</code></td><td><code>navy-800</code></td><td>Pressed</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-secondary-disabled)"></span></td><td><code>--action-secondary-disabled</code></td><td><code>navy-300</code></td><td><code>navy-700</code></td><td>Disabled border</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-secondary-text)"></span></td><td><code>--action-secondary-text</code></td><td><code>navy-950</code></td><td><code>navy-50</code></td><td>Label</td></tr>
+            <tr><td><span class="chip" style="background: var(--action-secondary-border)"></span></td><td><code>--action-secondary-border</code></td><td><code>navy-950</code></td><td><code>navy-50</code></td><td>Border</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TYPE ========================================================= -->
+    <section class="docs-section">
+      <h2>Type scale</h2>
+      <p>Figma collection “text primitives”. Each size has three values that switch automatically: lg (wider than 1280px), md (800–1280px) and sm (narrower than 800px). Resize the window to see them change.</p>
+        <div class="type-row"><div class="type-row__meta"><code>--font-size-600</code><br>lg / md / sm: 100 / 72 / 56px</div><div style="font-size: var(--font-size-600); font-weight: var(--font-weight-bold); line-height: 1.1">Agentic AI</div></div>
+        <div class="type-row"><div class="type-row__meta"><code>--font-size-500</code><br>lg / md / sm: 72 / 56 / 40px</div><div style="font-size: var(--font-size-500); font-weight: var(--font-weight-bold); line-height: 1.1">Agentic AI</div></div>
+        <div class="type-row"><div class="type-row__meta"><code>--font-size-400</code><br>lg / md / sm: 56 / 36 / 32px</div><div style="font-size: var(--font-size-400); font-weight: var(--font-weight-bold); line-height: 1.1">Agentic AI</div></div>
+        <div class="type-row"><div class="type-row__meta"><code>--font-size-300</code><br>lg / md / sm: 40 / 28 / 24px</div><div style="font-size: var(--font-size-300); font-weight: var(--font-weight-bold); line-height: 1.1">Agentic AI</div></div>
+        <div class="type-row"><div class="type-row__meta"><code>--font-size-200</code><br>lg / md / sm: 24 / 20 / 18px</div><div style="font-size: var(--font-size-200); font-weight: var(--font-weight-bold); line-height: 1.1">Agentic AI</div></div>
+        <div class="type-row"><div class="type-row__meta"><code>--font-size-100</code><br>lg / md / sm: 16 / 16 / 16px</div><div style="font-size: var(--font-size-100); font-weight: var(--font-weight-bold); line-height: 1.1">Agentic AI</div></div>
+      <h3>Text styles</h3>
+        <div class="type-row"><div class="type-row__meta"><strong>XL Display</strong><br><code>.text-xl-display</code><br>DM Serif Display · font-size-600</div><div class="text-xl-display">Posters</div></div>
+        <div class="type-row"><div class="type-row__meta"><strong>Display</strong><br><code>.text-display</code><br>Poppins · font-size-500</div><div class="text-display">Display</div></div>
+        <div class="type-row"><div class="type-row__meta"><strong>sm display</strong><br><code>.text-sm-display</code><br>Poppins · font-size-400</div><div class="text-sm-display">Small display</div></div>
+        <div class="type-row"><div class="type-row__meta"><strong>Headline</strong><br><code>.text-headline</code><br>Poppins · font-size-300</div><div class="text-headline">Headline</div></div>
+        <div class="type-row"><div class="type-row__meta"><strong>Sm Body</strong><br><code>.text-sm-body</code><br>Poppins · font-size-200</div><div class="text-sm-body">Small body text for intros</div></div>
+        <div class="type-row"><div class="type-row__meta"><strong>Body</strong><br><code>.text-body</code><br>Poppins · font-size-100</div><div class="text-body">Body text for paragraphs and descriptions.</div></div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Spacing</h2>
+      <p>Not Figma variables yet: these were measured from the components (see gaps.md).</p>
+      <div style="display: grid; gap: var(--space-300)">
+        <div class="space-row"><code style="width: 120px">--space-100</code><div class="space-row__bar" style="width: var(--space-100)"></div><span>4px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-200</code><div class="space-row__bar" style="width: var(--space-200)"></div><span>8px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-300</code><div class="space-row__bar" style="width: var(--space-300)"></div><span>12px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-400</code><div class="space-row__bar" style="width: var(--space-400)"></div><span>16px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-500</code><div class="space-row__bar" style="width: var(--space-500)"></div><span>24px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-600</code><div class="space-row__bar" style="width: var(--space-600)"></div><span>32px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-700</code><div class="space-row__bar" style="width: var(--space-700)"></div><span>40px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-800</code><div class="space-row__bar" style="width: var(--space-800)"></div><span>48px</span></div>
+        <div class="space-row"><code style="width: 120px">--space-900</code><div class="space-row__bar" style="width: var(--space-900)"></div><span>64px</span></div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS ==================================================== -->
+    <section class="docs-section">
+      <h2>Button</h2>
+      <p><code>&lt;a class="button button--primary"&gt;</code> or <code>button--secondary</code>. Works on links and buttons. Hover, pressed and focus happen automatically; they are shown side by side here.</p>
+      <div class="preview preview--padded">
+          <div class="state"><span class="button button--primary ">Label</span>default</div>
+          <div class="state"><span class="button button--primary is-hover">Label</span>hover</div>
+          <div class="state"><span class="button button--primary is-active">Label</span>pressed</div>
+          <div class="state"><span class="button button--primary is-focus">Label</span>focused</div>
+          <div class="state"><button class="button button--primary" disabled>Label</button>disabled</div>
+      </div>
+      <div class="preview preview--padded" style="margin-top: var(--space-400)">
+          <div class="state"><span class="button button--secondary ">Label</span>default</div>
+          <div class="state"><span class="button button--secondary is-hover">Label</span>hover</div>
+          <div class="state"><span class="button button--secondary is-active">Label</span>pressed</div>
+          <div class="state"><span class="button button--secondary is-focus">Label</span>focused</div>
+          <div class="state"><button class="button button--secondary" disabled>Label</button>disabled</div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Navigation</h2>
+      <p>Logo, links and a primary button on <code>surface-inverse</code>. Below 800px the links fold into a menu that opens without JavaScript.</p>
+      <div class="preview">
+  
+  <header class="nav">
+    <div class="nav__inner container">
+      <a class="logo" href="index.html"><img src="assets/images/logo.png" alt="Home"></a>
+
+      <!-- Desktop and tablet: links in the bar -->
+      <nav class="nav__links" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#about">about.</a></li>
+          <li><a class="nav__link" href="#work">work.</a></li>
+          <li><a class="nav__link" href="posters.html">blog.</a></li>
+        </ul>
+        <a class="button button--primary" href="#contact">contact</a>
+      </nav>
+
+      <!-- Mobile: the same links behind a menu button -->
+      <details class="nav__menu">
+        <summary aria-label="Menu"><span class="nav__icon"></span></summary>
+        <nav class="nav__panel" aria-label="Main (mobile)">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#about">about.</a></li>
+            <li><a class="nav__link" href="#work">work.</a></li>
+            <li><a class="nav__link" href="posters.html">blog.</a></li>
+          </ul>
+          <a class="button button--primary" href="#contact">contact</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Hero</h2>
+      <p><code>.hero.section</code> with <code>.hero__name</code> and <code>.hero__headline</code>.</p>
+      <div class="preview">
+        <section class="hero section"><div class="container"><p class="hero__name">James Jones</p><p class="hero__headline">UX. UI.<br>Agentic AI.</p></div></section>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Project card</h2>
+      <p><code>.project-card</code>; add <code>.project-card--raised</code> for the grey background (Figma property “hasBG”).</p>
+      <div class="preview">
+        <article class="project-card project-card--raised">
+          <div class="project-card__inner">
+            <img class="project-card__image" src="assets/images/project-soft-agents.jpg" alt="Diagram of AI agents working together">
+            <div class="project-card__body">
+              <h3 class="project-card__headline">Soft Agents</h3>
+              <p>I run moonlearning.io, a hands-on learning platform for UI design, Figma, and AI-powered product building.</p>
+              <a class="project-card__link" href="#">find out more <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>About</h2>
+      <p>Text, an optional secondary button (Figma property “hadButton”) and a square image. On mobile the image moves to the top.</p>
+      <div class="preview">
+        <section class="about section">
+          <div class="about__inner">
+            <div class="about__content">
+              <h3 class="about__headline">About me</h3>
+              <p class="about__text">Welcome to my portfolio! I'm Kim, a passionate graphic UI designer dedicated to crafting visual experiences that resonate with users.</p>
+              <a class="button button--secondary" href="#">contact</a>
+            </div>
+            <img class="about__image" src="assets/images/portrait.jpg" alt="Portrait of Kim smiling, wearing round glasses">
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Skills</h2>
+      <p>A title and up to three items, each with a <code>border-strong</code> rule above it.</p>
+      <div class="preview">
+        <section class="skills section">
+          <h3 class="skills__title">Skills</h3>
+          <ul class="skills__list">
+            <li class="skills__item"><h4 class="skills__headline">Graphic Design</h4><p class="skills__text">Vibrant visuals and engaging layouts.</p></li>
+            <li class="skills__item"><h4 class="skills__headline">UI Design</h4><p class="skills__text">Intuitive interfaces shaped by user feedback.</p></li>
+            <li class="skills__item"><h4 class="skills__headline">Front End</h4><p class="skills__text">HTML and CSS for a smoother handoff.</p></li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Posters</h2>
+      <p><code>.poster</code> with a size modifier <code>--l</code>, <code>--m</code> or <code>--s</code>, inside <code>.posters__grid</code> on a <code>.posters</code> (inverse) background.</p>
+      <div class="preview">
+        <div class="posters section">
+          <p class="posters__title text-xl-display">Posters</p>
+          <div class="posters__grid">
+            <figure class="poster poster--m"><img src="assets/images/poster-3.jpg" alt="Minor Rituals poster: a red flower with a yellow centre"></figure>
+            <figure class="poster poster--s"><img src="assets/images/poster-5.jpg" alt="Poster: a white hand drawing over red shapes"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <h2>Footer</h2>
+      <p>Centred links on <code>surface-inverse</code>; stacks on mobile.</p>
+      <div class="preview">
+        <footer class="footer"><span>© 2026 Christine Vallaure</span><a href="#">Imprint</a><a href="#">Contact</a></footer>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="theme-switch" role="radiogroup" aria-label="Colour mode">
+    <input type="radio" name="theme" id="theme-light" checked><label for="theme-light">Light</label>
+    <input type="radio" name="theme" id="theme-dark"><label for="theme-dark">Dark</label>
+  </div>
+</body>
+</html>
